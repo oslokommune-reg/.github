@@ -29,10 +29,9 @@ jobs:
           pip install pre-commit
 
       - name: Install Terraform
-        uses: little-core-labs/install-terraform@v2.0.0
+        uses: hashicorp/setup-terraform@v3
         with:
-            version: 1.9.4
-
+          terraform_version: "1.9.4"
 
       - name: Copy pre-commit config
         run: |
