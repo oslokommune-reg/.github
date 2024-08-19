@@ -35,10 +35,13 @@ jobs:
       - name: Copy pre-commit config
         run: |
           mkdir -p .github/workflows
-          cp .github/workflows/config/.pre-commit-config.yaml .pre-commit-config.yaml
+          cp .github/workflows/templates/.pre-commit-config.yaml .pre-commit-config.yaml
 
       - name: Run pre-commit
-        run: pre-commit run --all-files
+        run: |
+          pre-commit run --all-files
+          git diff --exit-code || echo "Files were modified by pre-commit. Changes will be committed."
+        continue-on-error: true
 
       # Commit all changed files back to the repository
       - uses: stefanzweifel/git-auto-commit-action@v5
