@@ -43,5 +43,5 @@ jobs:
       # Commit all changed files back to the repository
       - uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: "Apply sqlfmt formatting"
-          file_pattern: '*.sql'
+          commit_message: "Apply formatting"
+          file_pattern: '*.sql *.py *.tf *.ts'
