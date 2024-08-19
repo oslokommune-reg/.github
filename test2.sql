@@ -1,1 +1,1 @@
-SELECT * FROM MYTABLE3:
+select * from mytable3:
