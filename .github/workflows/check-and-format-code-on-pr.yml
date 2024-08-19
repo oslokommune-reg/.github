@@ -1,4 +1,4 @@
-name: check-code-and-format-on-pr
+name: check-and-format-code-on-pr
 
 on:
   pull_request:
@@ -8,7 +8,7 @@ on:
 
 jobs:
   format-code:
-    runs-on: reg-pr-code-formatter
+    runs-on: ubuntu-latest
 
     permissions:
       contents: write
@@ -28,10 +28,16 @@ jobs:
           python -m pip install --upgrade pip
           pip install pre-commit
 
+      - name: Install Terraform
+        uses: little-core-labs/install-terraform@v2.0.0
+        with:
+            version: 1.9.4
+
+
       - name: Copy pre-commit config
         run: |
           mkdir -p .github/workflows
-          cp .github/workflows/config/.pre-commit-config.yaml .pre-commit-config.yaml
+          curl -O https://raw.githubusercontent.com/oslokommune-reg/.github/prod/.github/workflows/config/.pre-commit-config.yaml
 
       - name: Run pre-commit
         run: |
@@ -39,8 +45,7 @@ jobs:
           git diff --exit-code || echo "Files were modified by pre-commit. Changes will be committed."
         continue-on-error: true
 
-      # Commit all changed files back to the repository
       - uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: "Apply formatting"
+          commit_message: "Applied formatting"
           file_pattern: '*.sql *.py *.tf'
