@@ -1,4 +1,4 @@
-name: Format
+name: check-and-format-code-on-pr
 
 on:
   pull_request:
