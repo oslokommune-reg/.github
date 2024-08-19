@@ -10,11 +10,3 @@ terraform {
     local= "~> 1.4"
   }
 }
-data "terraform_remote_state" "domain" {
-  backend ="remote"
-  config= { organization = var.tfc_organization_name
-    workspaces = {
-      name = "ELT-weights-domain"
-    }
-  }
-}
