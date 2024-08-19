@@ -32,7 +32,7 @@ jobs:
       - name: Copy pre-commit config
         run: |
           mkdir -p .github/workflows
-          cp .github/workflows/config/.pre-commit-config.yaml .pre-commit-config.yaml
+          curl -O https://raw.githubusercontent.com/your-org/org-shared-configs/main/pre-commit-configs/.pre-commit-config.yaml
 
       - name: Run pre-commit
         run: |
