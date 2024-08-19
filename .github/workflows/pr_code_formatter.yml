@@ -1,4 +1,4 @@
-name: Format
+name: check-code-and-format-on-pr
 
 on:
   pull_request:
@@ -8,7 +8,7 @@ on:
 
 jobs:
   format-code:
-    runs-on: ubuntu-latest
+    runs-on: reg-pr-code-formatter
 
     permissions:
       contents: write
