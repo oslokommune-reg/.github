@@ -35,7 +35,7 @@ jobs:
       - name: Copy pre-commit config
         run: |
           mkdir -p .github/workflows
-          cp .github/workflows/templates/.pre-commit-config.yaml .pre-commit-config.yaml
+          cp .github/workflows/config/.pre-commit-config.yaml .pre-commit-config.yaml
 
       - name: Run pre-commit
         run: pre-commit run --all-files
