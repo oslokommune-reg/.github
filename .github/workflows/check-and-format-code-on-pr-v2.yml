@@ -1,16 +1,10 @@
 name: check-and-format-code-on-pr
 
 on:
-  pull_request_target:
-    branches:
-      - main
-      - dev
-      - prod
-  push:
-    branches:
-      - main
-      - dev
-      - prod
+  pull_request:
+    branches: [dev, main, prod]
+    types: [open, reopened, synchronize]
+
 
 jobs:
   format-code:
@@ -18,6 +12,8 @@ jobs:
 
     permissions:
       contents: write
+      pull-requests: write
+      checks: write  # Add this line
 
     steps:
       - uses: actions/checkout@v4
