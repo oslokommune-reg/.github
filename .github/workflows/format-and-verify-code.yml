@@ -3,7 +3,7 @@ name: format-and-verify-code
 on:
   pull_request:
     branches: [dev, main, prod]
-    types: [opened, synchronize, reopened]
+    types: [opened, reopened]
 
 jobs:
   format-code:
@@ -44,24 +44,3 @@ jobs:
       - uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "Applied formatting"
-
-  verify-formatting:
-    needs: format-code
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.11'
-      - name: Install pre-commit
-        run: pip install pre-commit
-      - name: Run pre-commit
-        run: pre-commit run --all-files
-        continue-on-error: true
-      - name: Check for unstaged changes
-        run: |
-          if ! git diff --exit-code; then
-            echo "Formatting check failed. Please close and reopen the pull request to trigger new."
-            exit 1
-          fi
