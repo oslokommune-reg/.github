@@ -1,13 +1,14 @@
 name: check-and-format-code-on-pr
 
 on:
+  pull_request_target:
+    branches:
+      - main
+      - dev
+      - prod
   push:
     branches:
-     - main
-     - dev
-     - prod
-  pull_request:
-    branches:
+      - main
       - dev
       - prod
 
