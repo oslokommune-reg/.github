@@ -45,11 +45,3 @@ jobs:
       - uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "Applied formatting"
-          
-
-      - name: HOTFIX - Close and reopen PR
-        if: steps.auto-commit-action.outputs.changes_detected == 'true'
-        run: |
-          PR_NUMBER=$(gh pr view --json number -q .number)
-          gh pr close $PR_NUMBER --comment "Closing to retrigger workflow"
-          gh pr reopen $PR_NUMBER
