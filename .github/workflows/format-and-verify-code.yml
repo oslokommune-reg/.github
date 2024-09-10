@@ -58,6 +58,7 @@ jobs:
         run: pip install pre-commit
       - name: Run pre-commit
         run: pre-commit run --all-files
+        continue-on-error: true
       - name: Check for unstaged changes
         run: |
           if ! git diff --exit-code; then
