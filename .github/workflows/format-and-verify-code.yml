@@ -7,7 +7,6 @@ on:
 
 jobs:
   format-code:
-    name: FormatCode
     runs-on: ubuntu-latest
     permissions:
       contents: write
