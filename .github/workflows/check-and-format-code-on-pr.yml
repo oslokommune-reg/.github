@@ -1,9 +1,9 @@
 name: check-and-format-code-on-pr
 
 on:
-  pull_request:
+  pull_request_target:
     branches: [dev, main, prod]
-    types: [open, reopened, synchronize]
+    types: [opened, synchronize, reopened]
 
 jobs:
   format-code:
