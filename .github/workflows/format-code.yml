@@ -1,4 +1,4 @@
-name: check-and-format-code-on-pr
+name: format-code
 
 on:
   pull_request_target:
