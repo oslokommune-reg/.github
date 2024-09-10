@@ -3,7 +3,8 @@ name: check-and-format-code-on-pr
 on:
   pull_request:
     branches: [dev, main, prod]
-    types: [open, reopened, synchronize]
+    types: [created, open, reopened, synchronize]
+  push: [dev, main, prod]
 
 
 jobs:
