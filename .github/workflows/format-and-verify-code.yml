@@ -1,7 +1,7 @@
 name: format-code
 
 on:
-  pull_request:
+  pull_request_target:
     branches: [dev, main, prod]
     types: [opened, synchronize, reopened]
 
