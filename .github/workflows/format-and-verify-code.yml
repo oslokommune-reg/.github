@@ -1,6 +1,12 @@
 name: format-code
 
 on:
+  push:
+    branches:
+      - '**'
+      - '!dev'
+      - '!main'
+      - '!prod'
   pull_request_target:
     branches: [dev, main, prod]
     types: [opened, synchronize, reopened]
@@ -65,7 +71,7 @@ jobs:
       - uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "Applied formatting [skip ci]"
-          file_pattern: '.'
+          branch: ${{ github.head_ref }}
 
       - name: Check if commit was made
         run: |
