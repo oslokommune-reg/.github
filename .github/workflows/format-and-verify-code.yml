@@ -56,24 +56,7 @@ jobs:
           fi
         continue-on-error: true
 
-      - name: Check for changes
-        id: git-check
-        run: |
-          git status
-          git diff --exit-code || echo "changes=true" >> $GITHUB_OUTPUT
-
-      - name: Debug info
-        run: |
-          echo "Changes detected: ${{ steps.git-check.outputs.changes }}"
-          git status
-          git diff
-
       - uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: "Applied formatting [skip ci]"
+          commit_message: "Applied formatting"
           branch: ${{ github.head_ref }}
-
-      - name: Check if commit was made
-        run: |
-          git log -1
-          git status
